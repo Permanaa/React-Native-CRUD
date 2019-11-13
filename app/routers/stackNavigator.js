@@ -3,6 +3,7 @@ import AuthLoading from '../screens/AuthLoading'
 import Signin from '../screens/Signin'
 import Signup from '../screens/Signup'
 import Home from '../screens/Home'
+import Setting from '../screens/Setting'
 
 export const AuthLoadingStack = createStackNavigator(
     {
@@ -41,6 +42,17 @@ export const HomeStack = createStackNavigator(
     {
         Home: {
             screen: Home
+        }
+    },
+    {
+        headerMode: 'none'
+    }
+)
+
+export const SettingStack = createStackNavigator(
+    {
+        Setting: {
+            screen: Setting
         }
     },
     {
