@@ -3,7 +3,8 @@ import {
     AuthLoadingStack,
     SigninStack,
     SignupStack,
-    HomeStack
+    HomeStack,
+    SettingStack
 } from './stackNavigator'
 
 const switchNavigator = createSwitchNavigator(
@@ -11,7 +12,8 @@ const switchNavigator = createSwitchNavigator(
         AuthLoading: AuthLoadingStack,
         Signin: SigninStack,
         Signup: SignupStack,
-        Home: HomeStack
+        Home: HomeStack,
+        Setting: SettingStack
     },
     {
         initialRouteName: 'AuthLoading'
