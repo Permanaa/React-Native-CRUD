@@ -42,6 +42,12 @@ export default class Component extends React.Component {
             })
             return false
         }
+
+        if( email === '' || password === '' || name === ''){
+            this.setState({
+                error: true
+            })
+        }
         
         this.setState({
             error: false,
@@ -58,7 +64,7 @@ export default class Component extends React.Component {
                 loading: false
             })
             
-            onSign(res.data.access_token)
+            onSign(res.data)
             this.props.navigation.navigate('Home')
         })
         .catch((err) => {
@@ -120,7 +126,10 @@ export default class Component extends React.Component {
     }
 
     render(){
-        const { 
+        const {
+            name,
+            email,
+            password,
             error,
             errorPass, 
             loading, 
@@ -162,7 +171,8 @@ export default class Component extends React.Component {
                                 <View style={styles.form_wrapper}>
                                     <Text style={styles.text}>Nama</Text>
                                     <Item  style={styles.form_input}>
-                                        <Input 
+                                        <Input
+                                            value={name}
                                             style={[styles.form_input,styles.text]}
                                             onChangeText={(text) => this.setState({ name: text})}
                                         />
@@ -172,6 +182,7 @@ export default class Component extends React.Component {
                                     <Text style={styles.text}>Email</Text>
                                     <Item  style={styles.form_input}>
                                         <Input 
+                                            value={email}
                                             style={[styles.form_input,styles.text]}
                                             onChangeText={(text) => this.setState({ email: text})}
                                         />
@@ -180,7 +191,8 @@ export default class Component extends React.Component {
                                 <View style={styles.form_wrapper}>
                                     <Text style={styles.text}>Password</Text>
                                     <Item style={styles.form_input}>
-                                        <Input 
+                                        <Input
+                                            value={password}
                                             secureTextEntry={hidePassword} 
                                             style={[styles.form_input,styles.text]}
                                             onChangeText={(text) => this.setState({ password: text})}
@@ -194,6 +206,7 @@ export default class Component extends React.Component {
                                     <Text style={styles.text}>Konfirmasi password</Text>
                                     <Item style={styles.form_input}>
                                         <Input 
+                                            value={confirmPass}
                                             secureTextEntry={hidePassConfirm} 
                                             style={[styles.form_input,styles.text]}
                                             onChangeText={(text) => this.onConfirmPass(text)}
