@@ -29,6 +29,12 @@ export default class Component extends React.Component {
 
     signinUser = () => {
         const { email, password } = this.state
+
+        if( email === '' || password === ''){
+            this.setState({
+                error: true
+            })
+        }
         
         this.setState({
             error: false,
@@ -44,7 +50,7 @@ export default class Component extends React.Component {
                 loading: false
             })
             
-            onSign(res.data.access_token)
+            onSign(res.data)
             this.props.navigation.navigate('Home')
         })
         .catch((err) => {
