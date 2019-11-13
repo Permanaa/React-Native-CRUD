@@ -1,6 +1,6 @@
 import AsyncStorage from '@react-native-community/async-storage';
 
-export const onSign = async (userToken) => await AsyncStorage.setItem('userToken', userToken);
+export const onSign = async (data) => await AsyncStorage.setItem('userToken', data.access_token);
 
 export const onSignOut = async () => await AsyncStorage.removeItem('userToken');
 
